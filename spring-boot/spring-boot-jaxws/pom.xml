@@ -1,0 +1,181 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-cxf</artifactId>
+    <name>spring-boot-cxf</name>
+
+    <parent>
+        <groupId>io.tracee.examples.microservicedemo</groupId>
+        <artifactId>spring-boot-examples-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <cxf.version>3.1.4</cxf.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Ease development - e.g. with autorestart, see https://spring.io/blog/2015/06/17/devtools-in-spring-boot-1-3 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+        <!-- Apache CXF -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+
+
+        <!-- Management -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.tracee</groupId>
+            <artifactId>tracee-core</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.tracee.binding</groupId>
+            <artifactId>tracee-jaxws</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.tracee.contextlogger</groupId>
+            <artifactId>contextlogger-core</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.tracee.contextlogger.contextprovider</groupId>
+            <artifactId>contextprovider-jaxws</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- Generate Java-Classes inkl. JAXB-Bindings from WSDL & imported XSD -->
+            <!-- See Doku at https://jax-ws-commons.java.net/jaxws-maven-plugin/usage.html -->
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <!-- See https://jax-ws-commons.java.net/jaxws-maven-plugin/wsimport-mojo.html -->
+                    <wsdlUrls>
+                        <wsdlUrl>src/main/resources/calculation.wsdl</wsdlUrl>
+                    </wsdlUrls>
+                    <sourceDestDir>target/generated-sources/wsdlimport/Calculation</sourceDestDir>
+                    <!-- For accessing the imported schema, see https://netbeans.org/bugzilla/show_bug.cgi?id=241570 -->
+                    <vmArgs>
+                        <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                    </vmArgs>
+                    <!-- the binding.xml in the given directory is found automatically, because the directory is scanned for '.xml'-Files -->
+                    <bindingDirectory>src/main/resources/</bindingDirectory>
+                    <!-- Arguments for JAXB2-Generator behind JAX-WS-Frontend -->
+                    <args>
+                        <arg>-extension</arg>
+                        <!-- Thats a tricky parameter: The first '-B' is for passing the following argument to JAXB2-Generator
+                             the second is needed to generate the human readable Namespace-Prefixes -->
+                        <arg>-B-Xnamespace-prefix</arg>
+                    </args>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-namespace-prefix</artifactId>
+                        <version>1.1</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/generated-sources/wsdlimport/Weather1.0</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+        <pluginManagement>
+            <!-- Really ugly - neede to solve Maven Eclipse Plugin m2e issue... Argh! -->
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.jvnet.jax-ws-commons
+                                        </groupId>
+                                        <artifactId>
+                                            jaxws-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [2.3,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>wsimport</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute/>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>

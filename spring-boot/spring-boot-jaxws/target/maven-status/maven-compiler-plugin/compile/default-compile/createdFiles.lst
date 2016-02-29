@@ -1,0 +1,11 @@
+https/github_com/tracee/tracee/examples/jaxws/service/wsdl/AddParameters.class
+https/github_com/tracee/tracee/examples/jaxws/service/wsdl/DivParameters.class
+https/github_com/tracee/tracee/examples/jaxws/service/wsdl/MulParameters.class
+io/tracee/example/microservicedemo/jaxws/config/WebServiceConfiguration.class
+io/tracee/example/microservicedemo/jaxws/endpoint/CalculationServiceEndpoint.class
+https/github_com/tracee/tracee/examples/jaxws/service/wsdl/SubParameters.class
+https/github_com/tracee/tracee/examples/jaxws/service/wsdl/CalculationWS.class
+io/tracee/example/microservicedemo/jaxws/SoapApplication.class
+https/github_com/tracee/tracee/examples/jaxws/service/wsdl/ObjectFactory.class
+https/github_com/tracee/tracee/examples/jaxws/service/wsdl/CalculationService.class
+https/github_com/tracee/tracee/examples/jaxws/service/wsdl/package-info.class

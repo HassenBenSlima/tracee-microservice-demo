@@ -1,0 +1,43 @@
+jaxrs:
+  build: jaxrs
+  #hostname: jaxrs
+  ports:
+    - "8081:8081"
+  links:
+    - logstash:logstash
+  mem_limit: 256m
+
+jaxws:
+  build: jaxws
+  #hostname: jaxws
+  ports:
+    - "8082:8082"
+  links:
+    - logstash:logstash
+  mem_limit: 256m
+
+
+elasticsearch:
+  image: deviantony/elk-elasticsearch
+  ports:
+    - "9200:9200"
+
+logstash:
+  image: deviantony/elk-logstash
+  volumes:
+    - logstash-conf:/etc/logstash/conf.d
+  ports:
+    - "514/udp"
+    - "514/tcp"
+    - "12201/udp"
+    - "12201/tcp"
+  links:
+    - elasticsearch
+  mem_limit: 256m
+
+kibana4:
+  build: docker-elk-kibana
+  ports:
+    - "5601:5601"
+  links:
+    - elasticsearch

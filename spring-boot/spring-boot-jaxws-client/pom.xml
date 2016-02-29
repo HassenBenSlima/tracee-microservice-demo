@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-boot-cxf-client</artifactId>
+    <name>spring-boot-cxf-client</name>
+    <description>Sample Project for producing &amp; testing a SOAP-WSDL-driven Service with Spring Boot, Apache CXF
+        &amp; JAXB
+    </description>
+
+    <parent>
+        <groupId>io.tracee.microservicedemo</groupId>
+        <artifactId>tracee-microservice-demo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <cxf.version>3.1.4</cxf.version>
+    </properties>
+
+    <build>
+        <finalName>traceeTestServiceClient</finalName>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>2.7.7</version>
+                <executions>
+                    <execution>
+                        <id>process-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>src/main/resources/META-INF/wsdl/calculation.wsdl</wsdl>
+                                    <extraargs>
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>io.tracee.examples.microservicedemo.calculationclient</extraarg>
+                                    </extraargs>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+
+
+        <!-- external dependencies -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- tracee related dependencies -->
+        <dependency>
+            <groupId>io.tracee</groupId>
+            <artifactId>tracee-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.tracee.binding</groupId>
+            <artifactId>tracee-jaxws</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
