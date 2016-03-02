@@ -18,14 +18,14 @@ jaxrs:
   mem_limit: 512m
 
 elasticsearch:
-  image: deviantony/elk-elasticsearch
+  image: deviantony/elk-elasticsearch:latest
   ports:
     - "9200:9200"
 
 logstash:
   image: deviantony/elk-logstash
   volumes:
-    - logstash-conf:/etc/logstash/conf.d
+    - ./logstash-conf:/etc/logstash/conf.d:ro
   ports:
     - "514/udp"
     - "514/tcp"
@@ -35,9 +35,10 @@ logstash:
     - elasticsearch
   mem_limit: 256m
 
-kibana4:
+kibana:
   build: docker-elk-kibana
   ports:
     - "5601:5601"
   links:
     - elasticsearch
+  mem_limit: 256m
