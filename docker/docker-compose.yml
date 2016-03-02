@@ -1,12 +1,3 @@
-jaxrs:
-  build: jaxrs
-  #hostname: jaxrs
-  ports:
-    - "8081:8081"
-  links:
-    - logstash:logstash
-  mem_limit: 256m
-
 jaxws:
   build: jaxws
   #hostname: jaxws
@@ -14,8 +5,17 @@ jaxws:
     - "8082:8082"
   links:
     - logstash:logstash
-  mem_limit: 256m
+  mem_limit: 512m
 
+jaxrs:
+  build: jaxrs
+  #hostname: jaxrs
+  ports:
+    - "8081:8081"
+  links:
+    - logstash:logstash
+    - jaxws
+  mem_limit: 512m
 
 elasticsearch:
   image: deviantony/elk-elasticsearch

@@ -2,12 +2,12 @@
 #
 # VERSION       1.0
 
-FROM java:openjdk-6-jre
+FROM java:openjdk-8-jre
 MAINTAINER Tobias Stamann "tobias.stamann@holisticon.de"
 
 ENV DEBIAN_FRONTEND noninteractive
 EXPOSE 8002 8082
 
-ADD spring-boot-cxf.jar /jaxws/spring-boot-cxf.jar
+ADD spring-boot-cxf.jar spring-boot-cxf.jar
 
-ENTRYPOINT cd /jaxws && java -jar spring-boot-cxf.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/spring-boot-cxf.jar"]

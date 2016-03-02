@@ -6,7 +6,6 @@ import io.tracee.examples.microservicedemo.calculationclient.CalculationWS;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,7 +20,7 @@ public class ClientConfig {
     @Bean
     public CalculationWS createJaxWsCalculatorClient2() throws MalformedURLException {
 
-        CalculationService calculationService = new CalculationService(new URL("http://localhost:8082/calculation/CalculationService?wsdl"));
+        CalculationService calculationService = new CalculationService(new URL("http://jaxws:8082/calculation/CalculationService?wsdl"));
         calculationService.setHandlerResolver(new TraceeClientHandlerResolver());
 
         return calculationService.getPort(CalculationWS.class);
