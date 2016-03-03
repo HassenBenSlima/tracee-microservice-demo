@@ -1,15 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-cxf-client</artifactId>
+    <artifactId>spring-boot-jaxws-client</artifactId>
     <name>spring-boot-cxf-client</name>
-    <description>Sample Project for producing &amp; testing a SOAP-WSDL-driven Service with Spring Boot, Apache CXF
-        &amp; JAXB
-    </description>
 
     <parent>
-        <groupId>io.tracee.microservicedemo</groupId>
-        <artifactId>tracee-microservice-demo</artifactId>
+        <groupId>io.tracee.examples.microservicedemo</groupId>
+        <artifactId>spring-boot-examples-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

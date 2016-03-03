@@ -18,6 +18,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jersey</artifactId>
@@ -28,8 +29,8 @@
         </dependency>
 
         <dependency>
-            <groupId>io.tracee.microservicedemo</groupId>
-            <artifactId>spring-boot-cxf-client</artifactId>
+            <groupId>io.tracee.examples.microservicedemo</groupId>
+            <artifactId>spring-boot-jaxws-client</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -42,13 +43,13 @@
         <dependency>
             <groupId>io.tracee</groupId>
             <artifactId>tracee-core</artifactId>
-            <version>1.1.0</version>
+            <version>${tracee.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.tracee.binding</groupId>
             <artifactId>tracee-jaxrs2</artifactId>
-            <version>1.1.0</version>
+            <version>${tracee.version}</version>
         </dependency>
 
         <dependency>

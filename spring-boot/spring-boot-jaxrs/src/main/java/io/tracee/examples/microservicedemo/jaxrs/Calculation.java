@@ -19,8 +19,8 @@ public class Calculation {
     }
 
     private Calculation(List<Double> parameters, List<Operation> operations, int operation, double result) {
-        this.parameters = new ArrayList<Double>(parameters);
-        this.operations = new ArrayList<Operation>(operations);
+        this.parameters = new ArrayList<>(parameters);
+        this.operations = new ArrayList<>(operations);
 
         this.operations.remove(operation);
         this.parameters.set(operation, result);

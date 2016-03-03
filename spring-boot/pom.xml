@@ -4,7 +4,6 @@
     <groupId>io.tracee.examples.microservicedemo</groupId>
     <artifactId>spring-boot-examples-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-examples-parent</name>
     <packaging>pom</packaging>
 
 
@@ -16,11 +15,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tracee.version>1.1.2</tracee.version>
+        <tracee.contextlogger.version>0.8.0</tracee.contextlogger.version>
     </properties>
 
     <modules>
-        <module>spring-boot-jaxws</module>
         <module>spring-boot-jaxws-client</module>
+        <module>spring-boot-jaxws</module>
         <module>spring-boot-jaxrs</module>
         <!-- <module>spring-boot-jms</module> -->
     </modules>
@@ -38,6 +39,147 @@
             </plugin>
         </plugins>
     </build>
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- internal dependencies-->
+            <dependency>
+                <groupId>io.tracee.examples</groupId>
+                <artifactId>tracee-examples-jaxws-service-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.tracee.examples</groupId>
+                <artifactId>tracee-examples-jaxws-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.tracee.examples</groupId>
+                <artifactId>tracee-examples-ejb-interface</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.tracee.examples</groupId>
+                <artifactId>tracee-examples-jms-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <!-- tracee related dependencies -->
+            <dependency>
+                <groupId>io.tracee</groupId>
+                <artifactId>tracee-bom</artifactId>
+                <version>${tracee.version}</version>
+                <!-- You should specify a version instead -->
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.tracee.contextlogger.contextprovider</groupId>
+                <artifactId>contextprovider-javaee</artifactId>
+                <version>${tracee.contextlogger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.tracee.contextlogger.connector</groupId>
+                <artifactId>connector-http</artifactId>
+                <version>${tracee.contextlogger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.tracee.contextlogger</groupId>
+                <artifactId>contextlogger-core</artifactId>
+                <version>${tracee.contextlogger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.tracee.contextlogger.contextprovider</groupId>
+                <artifactId>contextprovider-servlet</artifactId>
+                <version>${tracee.contextlogger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.tracee.contextlogger.contextprovider</groupId>
+                <artifactId>contextprovider-aspectj</artifactId>
+                <version>${tracee.contextlogger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.tracee.contextlogger.contextprovider</groupId>
+                <artifactId>contextprovider-jaxws</artifactId>
+                <version>${tracee.contextlogger.version}</version>
+            </dependency>
+
+
+            <!-- external dependencies -->
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.ejb</groupId>
+                <artifactId>ejb-api</artifactId>
+                <version>3.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>2.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib-nodep</artifactId>
+                <version>3.1</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
 

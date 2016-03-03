@@ -6,7 +6,6 @@ FROM java:openjdk-8-jre
 MAINTAINER Tobias Stamann "tobias.stamann@holisticon.de"
 
 ENV DEBIAN_FRONTEND noninteractive
-EXPOSE 8002 8082
 
 ADD spring-boot-cxf.jar spring-boot-cxf.jar
 
