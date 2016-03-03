@@ -39,7 +39,7 @@ public class CalculationServiceEndpoint implements CalculationWS {
 
     @Override
     public double substraction(SubParameters parameters) {
-        LOGGER.info("substract {} from {}", parameters.getParam2(), parameters.getParam1());
+        LOGGER.info("subtract {} from {}", parameters.getParam2(), parameters.getParam1());
         return parameters.getParam1() - parameters.getParam2();
     }
 }

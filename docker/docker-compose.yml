@@ -42,3 +42,10 @@ kibana:
   links:
     - elasticsearch
   mem_limit: 256m
+
+
+logspout:
+  image: gliderlabs/logspout:latest
+  volumes:
+    - ./var/run/docker.sock:/tmp/docker.sock
+
