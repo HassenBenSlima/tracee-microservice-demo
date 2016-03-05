@@ -14,9 +14,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 @Configuration
-public class ClientConfig {
+public class JaxWsClientConfig {
 
-    @Value("io.tracee.jaxwsCalculationService.url")
+    @Value("${io.tracee.jaxwsCalculationService.url}")
     private String jaxWsCalculationServiceUrl;
 
 
@@ -24,18 +24,18 @@ public class ClientConfig {
     public CalculationWS createJaxWsCalculatorClient2() throws MalformedURLException {
 
 
-        final URL wsdlUrl = ClientConfig.class.getResource("/META-INF/wsdl/calculation.wsdl");
+        final URL wsdlUrl = JaxWsClientConfig.class.getResource("/META-INF/wsdl/calculation.wsdl");
 
-        Service yourService= CalculationService.create(
-                wsdlUrl,new QName("https://github.com/tracee/tracee/examples/jaxws/service/wsdl","CalculationService"));
+        Service yourService = CalculationService.create(
+                wsdlUrl, new QName("https://github.com/tracee/tracee/examples/microservicedemo/jaxws/service/wsdl", "CalculationService"));
         yourService.setHandlerResolver(new TraceeClientHandlerResolver());
 
         CalculationWS calculationService = yourService.getPort(
-                new QName("https://github.com/tracee/tracee/examples/jaxws/service/wsdl", "DivisionPort"),
+                new QName("https://github.com/tracee/tracee/examples/microservicedemo/jaxws/service/wsdl", "CalculationServicePort"),
                 CalculationWS.class);
         BindingProvider bp = (BindingProvider) calculationService;
         bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY,
-                "http://jaxws:8082/calculation/CalculationService");
+                jaxWsCalculationServiceUrl);
 
         return calculationService;
 

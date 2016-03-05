@@ -1,6 +1,9 @@
 package io.tracee.examples.microservicedemo.jaxrs;
 
 
+import io.tracee.examples.microservicedemo.jaxrs.impl.Calculation;
+import io.tracee.examples.microservicedemo.jaxrs.impl.Operation;
+import io.tracee.examples.microservicedemo.jaxrs.impl.SingleOperation;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.Test;

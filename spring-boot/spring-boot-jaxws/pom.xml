@@ -90,6 +90,7 @@
                     <wsdlUrls>
                         <wsdlUrl>src/main/resources/calculation.wsdl</wsdlUrl>
                     </wsdlUrls>
+                    <packageName>io.tracee.examples.microservicedemo.jaxws.service</packageName>
                     <sourceDestDir>target/generated-sources/wsdlimport/Calculation</sourceDestDir>
                     <!-- For accessing the imported schema, see https://netbeans.org/bugzilla/show_bug.cgi?id=241570 -->
                     <vmArgs>

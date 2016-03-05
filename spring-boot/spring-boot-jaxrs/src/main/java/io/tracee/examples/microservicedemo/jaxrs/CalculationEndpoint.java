@@ -5,6 +5,9 @@ import io.tracee.examples.microservicedemo.calculationclient.CalculationWS;
 import io.tracee.examples.microservicedemo.calculationclient.DivParameters;
 import io.tracee.examples.microservicedemo.calculationclient.MulParameters;
 import io.tracee.examples.microservicedemo.calculationclient.SubParameters;
+import io.tracee.examples.microservicedemo.jaxrs.impl.Calculation;
+import io.tracee.examples.microservicedemo.jaxrs.impl.Operation;
+import io.tracee.examples.microservicedemo.jaxrs.impl.SingleOperation;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,7 +28,7 @@ public class CalculationEndpoint {
 
     @GET
     @Produces("application/json")
-    public Double calculate(@QueryParam("calculation") String calculation) {
+    public CalculationResult calculate(@QueryParam("calculation") String calculation) {
 
         logger.info("Solve calculation: {}", calculation);
 
@@ -46,6 +49,7 @@ public class CalculationEndpoint {
                 double subResult = calculationService.multiplication(mulParameters);
 
                 parsedCalculation = parsedCalculation.solvePartCalculation(i, subResult);
+
             } else if (singleOperation.getOperation() == Operation.DIVISION) {
 
                 DivParameters divParameters = new DivParameters();
@@ -54,6 +58,7 @@ public class CalculationEndpoint {
                 double subResult = calculationService.division(divParameters);
 
                 parsedCalculation = parsedCalculation.solvePartCalculation(i, subResult);
+
             } else {
                 i++;
             }
@@ -72,6 +77,7 @@ public class CalculationEndpoint {
                 double subResult = calculationService.substraction(subParameters);
 
                 parsedCalculation = parsedCalculation.solvePartCalculation(0, subResult);
+
             } else {
 
                 AddParameters addParameters = new AddParameters();
@@ -80,10 +86,11 @@ public class CalculationEndpoint {
                 double subResult = calculationService.addition(addParameters);
 
                 parsedCalculation = parsedCalculation.solvePartCalculation(0, subResult);
+
             }
         }
 
-        return parsedCalculation.getResult();
+        return new CalculationResult(calculation, parsedCalculation.getResult());
 
     }
 

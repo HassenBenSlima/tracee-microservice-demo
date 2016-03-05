@@ -1,4 +1,4 @@
-package io.tracee.examples.microservicedemo.jaxrs;
+package io.tracee.examples.microservicedemo.jaxrs.impl;
 
 
 import java.util.ArrayList;

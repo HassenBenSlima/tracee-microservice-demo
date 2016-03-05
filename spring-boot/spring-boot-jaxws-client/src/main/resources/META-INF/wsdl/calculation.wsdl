@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <wsdl:definitions name="CalculationService"
-                  targetNamespace="https://github.com/tracee/tracee/examples/jaxws/service/wsdl"
+                  targetNamespace="https://github.com/tracee/tracee/examples/microservicedemo/jaxws/service/wsdl"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                  xmlns:tns="https://github.com/tracee/tracee/examples/jaxws/service/wsdl"
+                  xmlns:tns="https://github.com/tracee/tracee/examples/microservicedemo/jaxws/service/wsdl"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <wsdl:types>
         <xs:schema elementFormDefault="unqualified"
-                   targetNamespace="https://github.com/tracee/tracee/examples/jaxws/service/wsdl" version="1.0"
-                   xmlns:tns="https://github.com/tracee/tracee/examples/jaxws/service/wsdl"
+                   targetNamespace="https://github.com/tracee/tracee/examples/microservicedemo/jaxws/service/wsdl" version="1.0"
+                   xmlns:tns="https://github.com/tracee/tracee/examples/microservicedemo/jaxws/service/wsdl"
                    xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 
@@ -131,7 +131,7 @@
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="CalculationService">
-        <wsdl:port binding="tns:CalculationServiceSoapBinding" name="DivisionPort">
+        <wsdl:port binding="tns:CalculationServiceSoapBinding" name="CalculationServicePort">
             <soap:address location="http://localhost:8080/tracee-examples-jaxws-service/CalculationService"/>
         </wsdl:port>
     </wsdl:service>

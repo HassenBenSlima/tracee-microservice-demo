@@ -1,18 +1,18 @@
 package io.tracee.example.microservicedemo.jaxws.endpoint;
 
-import https.github_com.tracee.tracee.examples.jaxws.service.wsdl.AddParameters;
-import https.github_com.tracee.tracee.examples.jaxws.service.wsdl.CalculationWS;
-import https.github_com.tracee.tracee.examples.jaxws.service.wsdl.DivParameters;
-import https.github_com.tracee.tracee.examples.jaxws.service.wsdl.MulParameters;
-import https.github_com.tracee.tracee.examples.jaxws.service.wsdl.SubParameters;
+import io.tracee.examples.microservicedemo.jaxws.service.AddParameters;
+import io.tracee.examples.microservicedemo.jaxws.service.CalculationWS;
+import io.tracee.examples.microservicedemo.jaxws.service.DivParameters;
+import io.tracee.examples.microservicedemo.jaxws.service.MulParameters;
+import io.tracee.examples.microservicedemo.jaxws.service.SubParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jws.HandlerChain;
 import javax.jws.WebService;
 
-@WebService(serviceName = "CalculationService", portName = "CalculationPort",
-        targetNamespace = "https://github.com/tracee/tracee/examples/jaxws/service/wsdl")
+@WebService(serviceName = "CalculationService", portName = "CalculationServicePort",
+        targetNamespace = "https://github.com/tracee/tracee/examples/microservicedemo/jaxws/service/wsdl")
 @HandlerChain(file = "/traceeHandlerChain.xml")
 public class CalculationServiceEndpoint implements CalculationWS {
 
