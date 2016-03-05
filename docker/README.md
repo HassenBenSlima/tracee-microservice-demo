@@ -2,28 +2,64 @@
 
 # tracee-microservice-examples
 
-This folder contains Dockerfiles and a `docker-compose.yml` descriptor for tracee-examples. It starts a preconfigured tomcat7, jbossas7 + ELK-Stack and
-deploys tracee-examples-webap and tracee-examples-ear into these containers.
+This folder contains Dockerfiles and a `docker-compose.yml` descriptor for tracee-microservice-demo. It starts a jaxws, jaxrs and jms spring boot application docker containers.
+Additionally it starts an ELK stack which is used by collect logs of all spring boot applications.
 
 ![overview](docker.png?raw=true)
 
-### Start the enviroment
+## Start the enviroment
+
+### Prerequisites
 
 1. Run `mvn install` on the tracee-examples parent project
 2. Install [`docker`](https://docs.docker.com/installation/)
 3. Install `docker-compose` [1.1.0-rc2](https://github.com/docker/fig/releases/tag/1.1.0-rc2) or newer.
-4. Create a docker machine `docker-machine create --virtualbox-memory "4096" --virtualbox-disk-size "20000" --virtualbox-cpu-count "2" --driver virtualbox dev`
-4. Run `docker-compose build` in this directory
-5. Run `docker-compose up` in this directory
 
-After starting all services, you may browse the following web endpoints:
+Depending on your operation system you also need to create a virtual machine to be able to run the docker containers (needed for Max OS, Windows and other non linux systems)
 
- * [http://localhost:8080/tracee-examples-webapp](http://localhost:8080/tracee-examples-webapp) - tracee-examples-webapp on tomcat7
- * [http://localhost:8080/tracee-examples-jaxrs2](http://localhost:8080/tracee-examples-jaxrs2) - tracee-examples-jaxrs2 on tomcat7
- * [http://localhost:8080/tracee-examples-springmvc](http://localhost:8080/tracee-examples-springmvc) - tracee-examples-springmvc on tomcat7
- * [http://localhost:8081/](http://localhost:8081/) - jbossas7
- * [http://localhost:9990/](http://localhost:9990/) - jbossas7 - management interface
+4. Create a docker machine if you are using a non Linux systems `docker-machine create --virtualbox-memory "4096" --virtualbox-disk-size "20000" --virtualbox-cpu-count "2" --driver virtualbox default`
+5. Start the virtusl machine by executing `docker-machine start default` 
+6. Execute `eval $(docker-machine env default)` in terminal before you start working
 
-_username and password is always admin:yummie_
+### Run the applications
+1. Run `docker-compose build` in this directory
+2. Run `docker-compose up` in this directory
+
+## Accessing the applications
+
+If you are using a VM for docker then replace localhost in urls by the ip of the VM (`docker-machine ip default`) 
+
+### JaxRS calculation application 
+
+Used to calculate complex calculations. Internally calls the JaxWS calculation application to solve simple calculations with two operands.
+
+* [http://localhost:8081/api/calculate?calculation=3-2](http://localhost:8081/api/calculate?calculation=3-2) - the rest endpoint for calculation, replace calculation parameter with your calculation
+* [http://localhost:9001/actuator](http://localhost:9001/actuator) spring boot actuator root
+
+Example: Calling service by using curl:
+
+    curl -G -v  --data-urlencode "calculation=4*5-10*4+33" http://localhost:8081/api/calculate
+
+
+
+### JaxWS calculation application
+
+Used to calculate simple calulations with two operands.
+
+* [http://localhost:8082/calculation/CalculationService?wsdl](http://localhost:8082/calculation/CalculationService?wsdl) webservice WSDL
+* [http://localhost:8082/calculation/CalculationService](http://localhost:8082/calculation/CalculationService) webservice endpoint
+* [http://localhost:9002/actuator](http://localhost:9002/actuator) spring boot actuator root
+
+### JMS calculation application
+
+
+### ELK Stack
+
+* [http://localhost:5601](http://localhost:5601) Kibana
+* [http://localhost:9200](http://localhost:9200) Elasticsearch
+
+
+
+
 
 
