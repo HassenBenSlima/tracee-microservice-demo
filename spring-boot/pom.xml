@@ -23,7 +23,7 @@
         <module>spring-boot-jaxws-client</module>
         <module>spring-boot-jaxws</module>
         <module>spring-boot-jaxrs</module>
-        <!-- <module>spring-boot-jms</module> -->
+        <module>spring-boot-jms</module>
     </modules>
 
     <build>

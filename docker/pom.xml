@@ -69,6 +69,14 @@
                                     <outputDirectory>${project.basedir}/jaxrs</outputDirectory>
                                 </dependency>
 
+                                <dependency>
+                                    <groupId>io.tracee.examples.microservicedemo</groupId>
+                                    <artifactId>spring-boot-jms</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>${project.basedir}/jms</outputDirectory>
+                                </dependency>
+
                             </artifactItems>
                             <stripVersion>true</stripVersion>
                             <overWriteIfNewer>true</overWriteIfNewer>
