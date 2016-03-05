@@ -50,13 +50,11 @@
         <dependency>
             <groupId>io.tracee</groupId>
             <artifactId>tracee-core</artifactId>
-            <version>1.1.0</version>
         </dependency>
 
         <dependency>
             <groupId>io.tracee.binding</groupId>
             <artifactId>tracee-jaxws</artifactId>
-            <version>1.1.0</version>
         </dependency>
 
         <dependency>
