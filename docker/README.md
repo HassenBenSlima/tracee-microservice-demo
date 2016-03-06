@@ -52,6 +52,14 @@ Used to calculate simple calulations with two operands.
 
 ### JMS calculation application
 
+Used to asynchronously perform multiple calculations. Asynchronously calls JaxWs service.
+
+* [http://localhost:8080/api/calculate?calculation=3-2;3-43](http://localhost:8080/api/calculate?calculations=3-2;3-43) - the rest endpoint for calculation, replace calculations parameter with your ';' separated calculation
+* [http://localhost:9000/actuator](http://localhost:9000/actuator) spring boot actuator root
+
+Example: Calling service by using curl:
+
+    curl -G -v  --data-urlencode "calculations=4*5-10*4+33;354/34-45*43;4-3+3*45" http://localhost:8080/api/calculate
 
 ### ELK Stack
 
