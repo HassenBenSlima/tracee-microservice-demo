@@ -1,6 +1,6 @@
-> This document contains documentation for TracEE examples. Click [here](/README.md) to get an overview that TracEE is about.
+> This document contains documentation for TracEE microservice demo. 
 
-# tracee-microservice-examples
+# tracee-microservice-demo
 
 This folder contains Dockerfiles and a `docker-compose.yml` descriptor for tracee-microservice-demo. It starts a jaxws, jaxrs and jms spring boot application docker containers.
 Additionally it starts an ELK stack which is used by collect logs of all spring boot applications.
@@ -18,7 +18,7 @@ Additionally it starts an ELK stack which is used by collect logs of all spring 
 Depending on your operation system you also need to create a virtual machine to be able to run the docker containers (needed for Max OS, Windows and other non linux systems)
 
 4. Create a docker machine if you are using a non Linux systems `docker-machine create --virtualbox-memory "4096" --virtualbox-disk-size "20000" --virtualbox-cpu-count "2" --driver virtualbox default`
-5. Start the virtusl machine by executing `docker-machine start default` 
+5. Start the virtual machine by executing `docker-machine start default` 
 6. Execute `eval $(docker-machine env default)` in terminal before you start working
 
 ### Run the applications
