@@ -16,15 +16,19 @@ import java.util.Map;
 
 import static io.tracee.configuration.TraceeFilterConfiguration.Channel.AsyncProcess;
 
+/**
+ * Sorry for this implementation, it's not the preferred way to do it.
+ * We still need to provide a proper binding for spring-jms consumers.
+ */
 
 @Component
 public class JmsMessageConsumer {
 
-    @JmsListener(destination = JmsConfig.QUEUE) // "queue://" +
+    @JmsListener(destination = JmsConfig.QUEUE)
     public void receiveOrder(String calculation, Message message) {
         Logger logger = org.slf4j.LoggerFactory.getLogger(JmsMessageProducerService.class);
 
-
+        // like explained in class comment - this code works, but it is not the proper way to do it
         try {
             beforeProcessing(message);
 
@@ -40,7 +44,6 @@ public class JmsMessageConsumer {
         } finally {
             cleanUp();
         }
-        //storeService.registerOrder(order);
 
     }
 
