@@ -6,6 +6,7 @@ jms:
     - "9000:9000"
   links:
     - logstash:logstash
+    - jaxrs
   mem_limit: 512m
 
 jaxrs:

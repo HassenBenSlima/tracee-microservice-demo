@@ -80,6 +80,7 @@
                             </artifactItems>
                             <stripVersion>true</stripVersion>
                             <overWriteIfNewer>true</overWriteIfNewer>
+                            <overWriteSnapshots>true</overWriteSnapshots>
                         </configuration>
                     </execution>
                 </executions>

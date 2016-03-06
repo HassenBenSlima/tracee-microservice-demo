@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tracee.version>1.1.2</tracee.version>
-        <tracee.contextlogger.version>0.8.0</tracee.contextlogger.version>
+        <tracee.contextlogger.version>0.11.0</tracee.contextlogger.version>
     </properties>
 
     <modules>
@@ -109,6 +109,12 @@
             <dependency>
                 <groupId>io.tracee.contextlogger.contextprovider</groupId>
                 <artifactId>contextprovider-jaxws</artifactId>
+                <version>${tracee.contextlogger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.tracee.contextlogger.contextprovider</groupId>
+                <artifactId>contextprovider-servlet-core</artifactId>
                 <version>${tracee.contextlogger.version}</version>
             </dependency>
 

@@ -42,7 +42,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        
+
 
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
@@ -68,13 +68,11 @@
         <dependency>
             <groupId>io.tracee.contextlogger</groupId>
             <artifactId>contextlogger-core</artifactId>
-            <version>0.10.0</version>
         </dependency>
 
         <dependency>
             <groupId>io.tracee.contextlogger.contextprovider</groupId>
             <artifactId>contextprovider-servlet-core</artifactId>
-            <version>0.10.0</version>
         </dependency>
 
         <dependency>

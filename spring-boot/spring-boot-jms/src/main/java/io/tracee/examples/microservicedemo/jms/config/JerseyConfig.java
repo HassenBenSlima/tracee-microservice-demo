@@ -15,4 +15,5 @@ public class JerseyConfig extends ResourceConfig {
         register(CalculationEndpoint.class);
         register(TraceeContainerFilter.class);
     }
+
 }
