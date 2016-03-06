@@ -8,7 +8,7 @@ This is a demo that contains three microservice containers that communicate with
 
 Please see the documentation stored in the docker folder about how to run the demo:
 
-[docker](Running the demo using docker)
+[Running the demo using docker](docker)
 
 
 
