@@ -29,6 +29,13 @@
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>io.tracee.examples.microservicedemo</groupId>
+            <artifactId>spring-boot-jms</artifactId>
+            <scope>runtime</scope>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
