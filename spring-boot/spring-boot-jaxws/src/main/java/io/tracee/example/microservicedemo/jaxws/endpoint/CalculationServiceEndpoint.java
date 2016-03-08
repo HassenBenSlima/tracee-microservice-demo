@@ -22,6 +22,10 @@ public class CalculationServiceEndpoint implements CalculationWS {
     @Override
     public double division(DivParameters parameters) {
         LOGGER.info("divide {} by {}", parameters.getParam1(), parameters.getParam2());
+
+        if (parameters.getParam2() == 0.0) {
+            throw new IllegalArgumentException("Got illegal argument");
+        }
         return parameters.getParam1() / parameters.getParam2();
     }
 
