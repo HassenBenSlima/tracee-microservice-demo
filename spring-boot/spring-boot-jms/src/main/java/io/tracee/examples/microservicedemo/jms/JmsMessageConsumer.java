@@ -4,6 +4,7 @@ import io.tracee.Tracee;
 import io.tracee.TraceeBackend;
 import io.tracee.TraceeConstants;
 import io.tracee.binding.jaxrs2.TraceeClientFilter;
+import io.tracee.contextlogger.TraceeContextLogger;
 import io.tracee.examples.microservicedemo.jms.config.JmsConfig;
 import org.slf4j.Logger;
 import org.springframework.jms.annotation.JmsListener;
@@ -39,8 +40,8 @@ public class JmsMessageConsumer {
 
             logger.info("Solved calculation: {} = {}", result.getCalculation(), result.getResult());
 
-        } catch (JMSException e) {
-            logger.error("JMS processing error", e);
+        } catch (Exception e) {
+            logger.error("Error during processing of calculation {}", calculation, e);
         } finally {
             cleanUp();
         }

@@ -42,29 +42,7 @@
     <dependencyManagement>
         <dependencies>
 
-            <!-- internal dependencies-->
-            <dependency>
-                <groupId>io.tracee.examples</groupId>
-                <artifactId>tracee-examples-jaxws-service-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.tracee.examples</groupId>
-                <artifactId>tracee-examples-jaxws-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
 
-            <dependency>
-                <groupId>io.tracee.examples</groupId>
-                <artifactId>tracee-examples-ejb-interface</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.tracee.examples</groupId>
-                <artifactId>tracee-examples-jms-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
 
 
             <!-- tracee related dependencies -->

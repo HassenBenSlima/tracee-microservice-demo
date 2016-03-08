@@ -37,7 +37,6 @@ public class JmsMessageProducerService {
             textMessage.setText(calculation);
             logger.info("I am about to send the calculation \"{}\" to {}", calculation, queue.toString());
             producer.send(textMessage);
-            session.commit();
         } catch (JMSException jmse) {
             throw new RuntimeException("This example is so cheap, this must not have happened!", jmse);
         }

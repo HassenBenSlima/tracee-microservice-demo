@@ -8,7 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-
         <module>docker</module>
         <module>spring-boot</module>
     </modules>
@@ -22,8 +21,7 @@
     <properties>
         <!-- TracEE Version -->
         <tracee.version>1.1.2</tracee.version>
-        <tracee.contextlogger.version>0.8.0</tracee.contextlogger.version>
-        <tracee.examples.version>0.10.0-SNAPSHOT</tracee.examples.version>
+        <tracee.contextlogger.version>0.11.0</tracee.contextlogger.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
@@ -152,31 +150,6 @@
 
     <dependencyManagement>
         <dependencies>
-
-            <!-- internal dependencies-->
-            <dependency>
-                <groupId>io.tracee.examples</groupId>
-                <artifactId>tracee-examples-jaxws-service-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.tracee.examples</groupId>
-                <artifactId>tracee-examples-jaxws-client</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.tracee.examples</groupId>
-                <artifactId>tracee-examples-ejb-interface</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.tracee.examples</groupId>
-                <artifactId>tracee-examples-jms-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
 
             <!-- tracee related dependencies -->
             <dependency>
